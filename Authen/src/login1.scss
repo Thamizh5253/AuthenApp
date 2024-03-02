@@ -1,0 +1,233 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #222;
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  background: linear-gradient(45deg, steelblue, darkslateblue) center;
+  background-size: 100vw 100vh;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 340px;
+}
+* {
+  box-sizing: border-box;
+  ::before,
+  ::after {
+    box-sizing: border-box;
+  }
+}
+
+.main {
+  width: 340px;
+  height: 400px;
+  background: white;
+  border-radius: 3px;
+  padding: 30px;
+  position: relative;
+  display: flex;
+  .form_wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    .tile {
+      text-align: center;
+      margin-bottom: 20px;
+      width: 100%;
+      overflow: hidden;
+      h3 {
+        font-size: 22px;
+        margin: 0px;
+        transition: all 0.3s ease;
+      }
+    }
+    .radio {
+      display: none;
+    }
+    .tab {
+      width: 50%;
+      border: solid 2px #f1f1f1;
+      height: 40px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      margin-bottom: 20px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      /* user-select: none; */
+      &.login_tab {
+        border-right: none;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+      }
+      &.signup_tab {
+        border-left: none;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+      }
+    }
+    .shape {
+      background: linear-gradient(45deg, steelblue, darkslateblue) no-repeat
+        center;
+      width: 50%;
+      height: calc(40px - 1px);
+      border-radius: 5px;
+      position: absolute;
+      top: 55.5px;
+      left: 0px;
+      opacity: 0.9;
+      transition: all 0.4s ease;
+      &:hover {
+        background-color: linear-gradient(-45deg, steelblue, darkslateblue)
+          no-repeat center;
+      }
+    }
+    #login {
+      &:checked ~ {
+        .shape {
+          left: 0px;
+        }
+        .login_tab {
+          border-color: transparent;
+          z-index: 1;
+          color: white;
+        }
+        .tile {
+          .signup {
+            display: none;
+          }
+        }
+        .form_wrap {
+          transform: translateX(0);
+          .signup_form {
+            opacity: 0;
+          }
+        }
+      }
+    }
+    #signup {
+      &:checked ~ {
+        .shape {
+          left: 50%;
+        }
+        .signup_tab {
+          border-color: transparent;
+          z-index: 1;
+          color: white;
+        }
+        .tile {
+          .login {
+            display: none;
+          }
+        }
+        .form_wrap {
+          transform: translateX(-100%);
+          .login_form {
+            opacity: 0;
+          }
+        }
+      }
+    }
+    a {
+      color: #f84298;
+      text-decoration: none;
+      transition: all 0.3s linear;
+      &:hover {
+        color: #a547b1;
+      }
+    }
+    .form_wrap {
+      display: flex;
+      width: 100%;
+      flex: 0 0 100%;
+      transition: transform 0.3s ease, opacity 0.2s ease;
+
+      .form_fild {
+        width: 100%;
+        flex: 0 0 100%;
+        transition: all 0.5s ease;
+        .input_group {
+          width: 100%;
+          margin-bottom: 12px;
+          .input {
+            border: solid #f1f1f1 2px;
+            border-radius: 5px;
+            width: 100%;
+            height: 40px;
+            padding: 5px 10px;
+            font-size: 15px;
+            font-weight: 500;
+            outline: none;
+            transition: all 0.3s linear;
+            background-color: white;
+            color: #222;
+            &::placeholder {
+              color: rgb(173, 173, 173);
+            }
+            &:hover {
+              border-color: rgba(248, 66, 151, 0.3);
+            }
+            &:focus {
+              border-color: rgba(248, 66, 151, 0.3);
+            }
+          }
+        }
+        .forgot {
+          display: block;
+          margin-bottom: 15px;
+          padding: 0px 2px;
+        }
+        .btn {
+          width: 100%;
+          height: 40px;
+          margin-bottom: 20px;
+          border: none;
+          outline: none;
+          font-size: 16px;
+          font-weight: 500;
+          letter-spacing: 0.8px;
+          color: white;
+          background: linear-gradient(45deg, steelblue, darkslateblue) no-repeat
+            center;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s linear;
+          &:hover {
+            background: linear-gradient(-45deg, steelblue, darkslateblue)
+              no-repeat center;
+          }
+          &:active {
+            transform: scale(0.95);
+          }
+        }
+        .not_mem {
+          text-align: center;
+          label {
+            pointer-events: none;
+            span {
+              pointer-events: all;
+              color: #f84298;
+              text-decoration: none;
+              transition: all 0.3s linear;
+              &:hover {
+                color: #a547b1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
