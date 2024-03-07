@@ -15,7 +15,7 @@ const Like = () => {
 
     try {
       const response = await axios.post(
-        "https://authen-app.vercel.app/api/increment-like",
+        "https://authen-server.vercel.app/api/increment-like",
         likes
       );
       // console.log(response.data.likes);
@@ -53,7 +53,7 @@ const Like = () => {
     const fetchLikeCount = async () => {
       try {
         const response = await fetch(
-          "https://authen-app.vercel.app/api/like-count"
+          "https://authen-server.vercel.app/api/like-count"
         );
         // console.log(response);
         const data = await response.json();
