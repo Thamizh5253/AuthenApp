@@ -60,7 +60,7 @@ const Login = () => {
     // console.log("Login clicked with UID:", uid, "and Password:", password);
     try {
       const response = await axios.post(
-        "https://authen-app.vercel.app/login",
+        "https://authen-server.vercel.app/login",
         credentials
       );
       console.log(response.status);
@@ -111,7 +111,7 @@ const Login = () => {
       // console.log("Login clicked with UID:", uid, "and Password:", password);
       try {
         const response = await axios.post(
-          "https://authen-app.vercel.app/signup",
+          "https://authen-server.vercel.app/signup",
           udata
         );
         console.log("Data Added", response.data);
