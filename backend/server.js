@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+ 
 const cors = require("cors");
 const app = express();
 const port = 3003;
@@ -77,12 +78,16 @@ app.post("/api/increment-like", (req, res) => {
   console.log("after:", likeCount);
 });
 
+
 // const data = {
 //   message: "Hello from the server!",
 // };
-// app.get("/api/data", (req, res) => {
-//   res.json(data);
-// });
+app.get("/api/wdata", (req, res) => {
+  res.json(process.env.W_KEY);
+ 
+
+
+});
 
 // Start the server
 
