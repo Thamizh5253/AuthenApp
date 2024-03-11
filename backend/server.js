@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 const port = 3003;
 let likeCount = process.env.LIKE ? parseInt(process.env.LIKE, 10) : 0;
-let api=process.env.W_API;
+// let api=process.env.W_API;
 // Middleware to parse JSON requests
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -83,13 +83,19 @@ app.post("/api/increment-like", (req, res) => {
 // const data = {
 //   message: "Hello from the server!",
 // };
-app.get("/api/wdata", (req, res) => {
-  res.json({apikey:api});
+// app.get("/api/wdata", (req, res) => {
+//   res.json({apikey:api});
  
 
 
-});
+// });
+const api=process.env.W_API ? process.env.W_API : 0;;
+// const apiKey = "e7ab12968358ecf387dc7f0c96c98660";
 
+// Define a route to retrieve the API key
+app.get("/api/getApiKey", (req, res) => {
+  res.json({ api });
+});
 // Start the server
 
 app.listen(port, () => {
