@@ -5,6 +5,7 @@ const cors = require("cors");
 const app = express();
 const port = 3003;
 let likeCount = process.env.LIKE ? parseInt(process.env.LIKE, 10) : 0;
+let api=process.env.W_API;
 // Middleware to parse JSON requests
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -29,7 +30,7 @@ const users = [
 // Login route
 app.post("/login", (req, res) => {
   const { uid, password } = req.body;
-  console.log(uid, password);
+  // console.log(uid, password);
   // Check if the provided credentials match any user
   const user = users.find((u) => u.username === uid && u.password === password);
 
@@ -44,7 +45,7 @@ app.post("/login", (req, res) => {
 
 app.post("/signup", (req, res) => {
   const { ruid, rpassword } = req.body;
-  console.log(ruid, rpassword);
+  // console.log(ruid, rpassword);
   // Check if the provided credentials match any user
   //   const user = users.find((u) => u.username === uid && u.password === password);
   const existingUser = users.find((u) => u.username === ruid);
@@ -54,7 +55,7 @@ app.post("/signup", (req, res) => {
   } else {
     //   Add the new user to the array
     users.push({ username: ruid, password: rpassword });
-    console.log(users);
+    // console.log(users);
     res.status(201).json({ message: "User created successfully" });
   }
 });
@@ -67,7 +68,7 @@ app.use(express.json());
 // Endpoint to get the like count
 app.get("/api/like-count", (req, res) => {
   res.json({ likes: likeCount });
-  console.log(likeCount);
+  // console.log(likeCount);
 });
 
 // Endpoint to increment the like count (for demonstration purposes)
@@ -75,7 +76,7 @@ app.post("/api/increment-like", (req, res) => {
   console.log(likeCount);
   likeCount += 1;
   res.status(200).json({ likes: likeCount });
-  console.log("after:", likeCount);
+  // console.log("after:", likeCount);
 });
 
 
@@ -83,7 +84,7 @@ app.post("/api/increment-like", (req, res) => {
 //   message: "Hello from the server!",
 // };
 app.get("/api/wdata", (req, res) => {
-  res.json(process.env.W_KEY);
+  res.json({apikey:api});
  
 
 
